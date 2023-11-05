@@ -17,22 +17,16 @@ use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-
+Route::get('/', function () { return response(''); });
 
 Route::post('/add/employee', [EmployeeController::class, 'add']);
 Route::post('/add/delegation', [DelegationController::class, 'add']);
 Route::get('/get/perdiem', [DelegationController::class, 'get']);
-
-Route::view('/', 'welcome');
 
 Route::get('/{any}', function () {
     return response()->json(['error' => 'Not Found'], ResponseAlias::HTTP_NOT_FOUND);
 })->where('any', '.*');
 
 Route::match(['post', 'put', 'delete'], '/{any}', function () {
-    return response()->json(['error' => 'Not allowed'], ResponseAlias::HTTP_METHOD_NOT_ALLOWED);
+    return response()->json(['error' => 'Method not allowed on this resource'], ResponseAlias::HTTP_METHOD_NOT_ALLOWED);
 })->where('any', '.*');
