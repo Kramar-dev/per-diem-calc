@@ -11,8 +11,6 @@ for a business trip for an employee.
 ```cd per-diem-calc```
 * run containers <br>
 ```docker-compose up server```
-* install laravel <br>
-```docker-compose run composer create-project laravel/laravel .```
 * migrate and seed database <br>
 ```docker-compose run artisan migrate``` <br>
 ```docker-compose run artisan db:seed```
