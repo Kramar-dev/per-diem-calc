@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         DB::table('countries')->insert([
             ['country' => 'PL', 'perdiem_amount' => 10],
             ['country' => 'DE', 'perdiem_amount' => 50],
-            ['country' => 'GB', 'perdiem_amount' => 70]
+            ['country' => 'GB', 'perdiem_amount' => 75]
         ]);
     }
 }

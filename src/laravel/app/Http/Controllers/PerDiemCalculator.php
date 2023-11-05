@@ -18,7 +18,6 @@ class PerDiemCalculator
         foreach ($delegationRecords as $record) {
             $startDate = Carbon::parse($record->start_date);
             $endDate = Carbon::parse($record->end_date);
-
             $totalPerDiem = 0;
 
             while ($startDate <= $endDate) {
@@ -64,14 +63,16 @@ class PerDiemCalculator
     public static function calculatePerDiemAmount($country, $date)
     {
         $perDiemAmounts = self::getPerDiemAmounts();
+        $date = Carbon::parse($date); // Parse the input date string into a Carbon instance
         $dayOfWeek = $date->dayOfWeek;
 
         if (array_key_exists($country, $perDiemAmounts)) {
-            if ($dayOfWeek == 0 || $dayOfWeek == 6)
+            if ($dayOfWeek == Carbon::SATURDAY || $dayOfWeek == Carbon::SUNDAY) {
                 return 0;
+            }
             return $perDiemAmounts[$country];
         }
-        return 0;
+
     }
 
     public static function getPerDiemAmounts(): array
