@@ -63,7 +63,7 @@ class PerDiemCalculator
     public static function calculatePerDiemAmount($country, $date)
     {
         $perDiemAmounts = self::getPerDiemAmounts();
-        $date = Carbon::parse($date); // Parse the input date string into a Carbon instance
+        $date = Carbon::parse($date);
         $dayOfWeek = $date->dayOfWeek;
 
         if (array_key_exists($country, $perDiemAmounts)) {
